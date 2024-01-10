@@ -1,5 +1,3 @@
-import sqlite3
-
 # Create a mapping between category IDs and their respective names
 categories_mapping = {
     1: 'high performing websites_all industries',
@@ -87,3 +85,10 @@ categories_mapping = {
     83: 'high performing websites_health_dentist and dental services',
     84: 'high performing websites_health_geriatric and aging care',
 }
+
+import sqlite3
+
+conn = sqlite3.connect('C:/Users/bruker/Desktop/DBParser/html_files.db')
+cursor = conn.cursor()
+
+cursor.execute("SELECT * FROM html_files")

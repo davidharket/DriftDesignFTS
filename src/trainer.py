@@ -1,19 +1,21 @@
 import utils
 import logging
 import os
+import torch
 import time
 import datetime
-
 import pytz
 import hydra
 import omegaconf
 from rich.console import Console
 from rich.progress import track
 from torch.utils.tensorboard import SummaryWriter
-
 from src.model import CodeLlamaForSequenceClassification
 from src.data import HTMLDataset
 from src.utils import calculate_metrics, evaluate, save_best_checkpoint
+from transformers import AutoTokenizer
+
+
 
 logger = logging.getLogger(__name__)
 console = Console()
@@ -58,7 +60,10 @@ def main(cfg: omegaconf.OmegaConf):
     early_stopping_counter = 0
 
     for epoch in range(1, cfg.num_train_epochs + 1):
-        ...
+        model.train()
+        model.zero_grad()
+
+
 
     console.print("\nFinished Finetuning.")
 
